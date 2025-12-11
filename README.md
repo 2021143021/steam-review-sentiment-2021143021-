@@ -496,3 +496,45 @@ python src/eda/plot_figures.py
   → images/ 폴더에 그래프 PNG 5장 생성
   → README에서 시각 자료로 활용
 
+## 10. 그래프/이미지 파일 요약
+
+README에서 사용하는 **그래프 5개**는 다음과 같다.
+
+1. `images/label_distribution.png`
+   - 라벨(긍/부정) 비율 그래프
+   - **위치:** [4.1 라벨(긍/부정) 분포](#41-라벨긍부정-분포)
+2. `images/review_length_hist.png`
+   - 리뷰 길이(문자 수) 분포 히스토그램
+   - **위치:** [4.2 리뷰 길이 분포](#42-리뷰-길이-분포)
+3. `images/reviews_per_game.png`
+   - 게임(app_id)별 리뷰 개수 상위 N개
+   - **위치:** [4.3 게임(app_id)별 리뷰 개수](#43-게임app_id별-리뷰-개수)
+4. `images/train_loss.png`
+   - Epoch별 Train Loss 변화
+   - **위치:** [5.5.1 Train Loss 그래프](#551-train-loss-그래프)
+5. `images/train_val_accuracy.png`
+   - Epoch별 Train vs Validation Accuracy
+   - **위치:** [5.5.2 Train vs Validation Accuracy 그래프](#552-train-vs-validation-accuracy-그래프)
+
+추가로, 수집 대상 게임을 보여주기 위한 **커버 이미지 5개**는 다음과 같다.
+
+- `images/cyberpunk_2077.jpg`
+- `images/hades.jpg`
+- `images/elden_ring.jpg`
+- `images/palworld.jpg`
+- `images/lies_of_p.jpg`
+
+이 이미지는 [2.1 수집 대상 게임](#21-수집-대상-게임-app_id-및-커버-이미지) 섹션에서 사용한다.
+
+## 11. 마무리
+
+본 프로젝트는 Steam 한국어 게임 리뷰 **20,596건**을 직접 크롤링하고, **KOELECTRA-small**을 활용하여 추천 여부 기반 감성 분류 모델을 구축하였다.
+
+- EDA를 통해 **라벨 불균형, 리뷰 길이 분포, 게임별 리뷰 편향**을 시각적으로 확인하였다.
+- 4 epoch 학습 결과, 학습/검증 정확도는 약 **0.94 / 0.83** 수준으로 수렴하였다.
+- 별도의 **2,500개 검증셋**에서 정확도 **0.9256**, 부정/긍정 양쪽에서 모두 높은 F1-score를 기록하였다.
+
+동시에, **추천 버튼과 실제 감정이 항상 일치하지 않는다는 한계**를 확인하였고, 향후에는 세밀한 감정 라벨링, 토픽모델링, 시계열 분석을 결합한 **더 풍부한 여론 분석 프로젝트**로 확장할 수 있음을 제시하였다.
+
+본 저장소는 크롤링 코드, 전처리, 학습 스크립트, 평가 코드, 그래프까지 모두 포함하여 **“데이터 수집 → 전처리 → 모델 학습 → 평가 → 분석/시각화”** 전체 파이프라인을 재현 가능하게 정리한다는 점에서 의미가 있다.
+
