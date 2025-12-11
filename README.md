@@ -461,33 +461,33 @@ steam-review-sentiment/
 ```bash
 python src/crawler/steam_review_crawler.py
 ```
-  -data/raw/steam_reviews_raw.csv 생성
+  → data/raw/steam_reviews_raw.csv 생성
 
 **2. 라벨링용 데이터셋 준비 (전처리 + 샘플링)**
 ```bash
 python src/preprocess/prepare_labeling_dataset.py
 ```
-  -data/labeled/steam_reviews_for_labeling.csv 생성
+  → data/labeled/steam_reviews_for_labeling.csv 생성
   
 **3. KOELECTRA-small 학습**
 ```bash
 python src/training/train_koelectra_steam.py
 ```
-  -models/koelectra_steam/에 모델 가중치 저장
-  -Epoch별 Loss/Accuracy 로그 출력
+  → models/koelectra_steam/에 모델 가중치 저장
+  → Epoch별 Loss/Accuracy 로그 출력
 
   
 **4. 자동 라벨링 (2,500개 샘플)**
 ```bash
 python src/labeling/auto_label_from_steam.py
 ```
-  -steam_reviews_for_labeling_labeled_auto.csv 생성
+  → steam_reviews_for_labeling_labeled_auto.csv 생성
 
 **5. 모델 평가 (2,500개 검증셋)**
 ```bash
 python src/labeling/auto_label_from_steam.py
 ```
-  -→ Accuracy, Classification report, Confusion Matrix 출력
+  → Accuracy, Classification report, Confusion Matrix 출력
 
 **6. EDA 및 그래프 생성**
 ```bash
