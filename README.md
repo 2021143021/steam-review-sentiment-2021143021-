@@ -1,4 +1,5 @@
-![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=260&section=header&text=Steam%20Review%20Sentiment%20💬&fontSize=70)
+![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=260&section=header&text=%20Steam%20Review%20Sentiment%20💬&fontSize=70)
+
 
 # 🎮 Steam 한국어 게임 리뷰 감성 분석 프로젝트
 **KOELECTRA-small 기반 긍·부정 분류 및 리뷰 패턴 분석**
