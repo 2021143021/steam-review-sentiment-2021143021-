@@ -297,3 +297,58 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 - **Train Accuracy**는 Epoch마다 상승하여 **0.94** 이상까지 올라간다.
 - **Validation Accuracy**는 약 **0.83** 내외에서 수렴한다.
 - Train과 Val 사이의 간격이 너무 크지 않아서 극단적인 과적합 상태는 아니지만, Train이 조금 더 높은 쪽으로 치우친다.
+
+6. 모델 평가: 2,500개 검증셋 성능
+
+검증용 데이터셋:
+
+파일: data/labeled/steam_reviews_for_labeling_labeled_auto.csv
+
+샘플 수: 2,500개
+
+컬럼: app_id, review, label, text_len, manual_label, manual_label_backup, labeling_source
+
+src/eval/eval_on_manual_labels.py에서 다음과 같은 평가를 수행한다.
+
+6.1 전체 정확도
+Accuracy: 0.9256
+
+
+2,500개 리뷰 중 약 **92.56%**를 올바르게 분류한다.
+
+실전 감성 분석 모델로 사용하기에 충분히 의미 있는 수준의 정확도이다.
+
+6.2 Classification Report
+class	precision	recall	f1-score	support
+0 (부정)	0.9010	0.8753	0.8880	842
+1 (긍정)	0.9376	0.9511	0.9443	1,658
+accuracy			0.9256	2,500
+macro avg	0.9193	0.9132	0.9161	2,500
+weighted avg	0.9252	0.9256	0.9253	2,500
+
+해석:
+
+긍정(1) 클래스에서 precision과 recall이 모두 높고, f1-score가 0.94 정도이다.
+
+부정(0) 클래스에서도 f1-score가 0.8880으로, 특정 클래스만 잘 맞추는 모델이 아니다.
+
+macro/weighted 평균이 모두 0.92 근처로 고르게 나온다.
+
+6.3 Confusion Matrix
+
+Confusion Matrix는 다음과 같다.
+
+	예측 0	예측 1
+실제 0	737	105
+실제 1	81	1,577
+
+실제 부정(0)인 리뷰 842개 중 737개를 맞추고, 105개를 긍정으로 잘못 분류한다.
+
+실제 긍정(1)인 리뷰 1,658개 중 1,577개를 맞추고, 81개를 부정으로 잘못 분류한다.
+
+이 결과는:
+
+모델이 전반적으로 긍정/부정을 모두 잘 구분한다는 것을 보여준다.
+
+다만 부정 리뷰 일부(105건)를 긍정으로 판단하는 경향이 존재한다.
+이 부분은 뒤의 한계점에서 다시 논의한다.
