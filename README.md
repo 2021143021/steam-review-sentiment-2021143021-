@@ -415,3 +415,58 @@ Confusion Matrix는 다음과 같다.
   - 할인 기간 전후 긍/부정 비율 차이 등을 시계열 그래프로 분석하는 것
 
 이를 통해 “어떤 이벤트 이후 여론이 어떻게 변했는가”까지 설명하는 프로젝트로 확장할 수 있다.
+
+## 9. 코드 구조 및 재현 방법
+
+### 9.1 디렉터리 구조
+
+프로젝트 주요 구조는 다음과 같다.
+
+```text
+steam-review-sentiment/
+├── data/
+│   ├── raw/
+│   │   └── steam_reviews_raw.csv
+│   └── labeled/
+│       ├── steam_reviews_for_labeling.csv
+│       └── steam_reviews_for_labeling_labeled_auto.csv
+├── images/
+│   ├── label_distribution.png
+│   ├── review_length_hist.png
+│   ├── reviews_per_game.png
+│   ├── train_loss.png
+│   ├── train_val_accuracy.png
+│   ├── cyberpunk_2077.jpg
+│   ├── hades.jpg
+│   ├── elden_ring.jpg
+│   ├── palworld.jpg
+│   └── lies_of_p.jpg
+├── models/
+│   └── koelectra_steam/  (학습된 KOELECTRA-small 가중치)
+└── src/
+    ├── crawler/
+    │   └── steam_review_crawler.py
+    ├── preprocess/
+    │   └── prepare_labeling_dataset.py
+    ├── training/
+    │   └── train_koelectra_steam.py
+    ├── labeling/
+    │   └── auto_label_from_steam.py
+    └── eval/
+        └── eval_on_manual_labels.py
+```
+### 9.2 실행 순서 요약
+
+**1. 리뷰 크롤링**
+```bash
+python src/crawler/steam_review_crawler.py
+```
+
+**2. 라벨링용 데이터셋 준비 (전처리 + 샘플링)**
+```python src/preprocess/prepare_labeling_dataset.py
+```
+
+**3. KOELECTRA-small 학습**
+```python src/training/train_koelectra_steam.py
+```
+
