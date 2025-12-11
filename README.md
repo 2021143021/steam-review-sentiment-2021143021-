@@ -222,3 +222,78 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 이 분포를 통해 다음을 확인한다.
 - 데이터가 **특정 게임에 편향(Bias)**되어 있다.
 - 이후 결과 해석 시, 특정 게임의 의견이 전체 감성 분포에 큰 영향을 줄 수 있음을 고려한다.
+
+## 5. 모델 학습: KOELECTRA-small
+
+### 5.1 모델 및 환경
+
+- **사전학습 언어모델**: `monologg/koelectra-small-v3-discriminator`
+- **작업**: 문장 단위 이진 분류 (긍정/부정)
+- **구현**:
+  - `transformers` 라이브러리의 `ElectraForSequenceClassification`을 사용한다.
+  - **토크나이저**: `ElectraTokenizer`
+- **입력 텍스트**:
+  - Steam 리뷰 문자열
+  - **최대 길이**: `max_length=256` 토큰
+  - **패딩**: `padding="max_length"`
+  - **트렁케이션**: `truncation=True`
+
+### 5.2 데이터 분할 및 DataLoader
+
+- **데이터 분할**: 전체 전처리 데이터(11,195건)를 기준으로 **Train:Validation = 8:2** 비율로 나눈다.
+- **입력 텐서**:
+  - `input_ids` (Int64)
+  - `attention_mask`
+  - `labels` (0/1, LongTensor)
+- **배치 사이즈**: `batch_size = 32`
+- **DataLoader**:
+  - **Train**: `RandomSampler`
+  - **Validation**: `SequentialSampler`
+
+### 5.3 학습 하이퍼파라미터
+
+- **Optimizer**: Adam
+  - `lr = 1e-4`
+  - `eps = 1e-6`
+- **스케줄러**: `get_linear_schedule_with_warmup`
+  - `num_warmup_steps = 0`
+  - `num_training_steps = len(train_dataloader) * num_epochs`
+- **Epoch 수**: 4
+- **Gradient clipping**: `max_grad_norm = 1.0`
+- **Seed**: `2025`로 고정하여 재현성을 확보한다.
+
+### 5.4 Epoch별 학습 결과
+
+학교 컴퓨터에서 학습한 최종 결과는 다음과 같다.
+
+| Epoch | Train Loss | Train Acc | Val Acc |
+|:---:|:---:|:---:|:---:|
+| 1 | 0.4362 | 0.8630 | 0.8328 |
+| 2 | 0.3323 | 0.9034 | 0.8306 |
+| 3 | 0.2508 | 0.9337 | 0.8342 |
+| **4** | **0.1896** | **0.9474** | **0.8335** |
+
+- **Train Loss**는 Epoch가 진행될수록 지속적으로 감소한다.
+- **Train Accuracy**는 **0.86 → 0.95** 수준까지 상승한다.
+- **Validation Accuracy**는 **0.83** 근처에서 안정적으로 유지되며, Epoch 3~4에서 큰 변동 없이 수렴하는 양상을 보인다.
+
+### 5.5 학습 곡선 시각화
+
+#### 5.5.1 Train Loss 그래프
+
+`images/train_loss.png` 그래프를 통해 학습 손실 변화를 확인한다.
+
+![Train Loss](images/train_loss.png)
+
+- Epoch가 증가할수록 Train Loss가 꾸준히 감소한다.
+- 이는 모델이 학습 데이터를 점점 더 잘 설명하고 있음을 의미한다.
+
+#### 5.5.2 Train vs Validation Accuracy 그래프
+
+`images/train_val_accuracy.png` 그래프를 통해 정확도 추이를 비교한다.
+
+![Accuracy](images/train_val_accuracy.png)
+
+- **Train Accuracy**는 Epoch마다 상승하여 **0.94** 이상까지 올라간다.
+- **Validation Accuracy**는 약 **0.83** 내외에서 수렴한다.
+- Train과 Val 사이의 간격이 너무 크지 않아서 극단적인 과적합 상태는 아니지만, Train이 조금 더 높은 쪽으로 치우친다.
