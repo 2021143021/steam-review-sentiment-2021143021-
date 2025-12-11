@@ -75,11 +75,11 @@ EDA와 후속 분석을 통해 리뷰 패턴을 정량적으로 탐색한다.
 
 | app_id  | 게임 이름        | 커버 이미지 예시 |
 |--------:|------------------|------------------|
-| 1091500 | Cyberpunk 2077   | <img src="images/cyberpunk_2077.jpg" width="140"> |
-| 1145360 | Hades            | <img src="images/hades.jpg" width="140">         |
-| 1245620 | ELDEN RING       | <img src="images/elden_ring.jpg" width="140">   |
-| 1623730 | Palworld         | <img src="images/palworld.jpg" width="140">     |
-| 1627720 | Lies of P        | <img src= ![Lies of P](https://github.com/user-attachments/assets/8341b5ca-8d94-4c64-a31f-225626b5c642)|
+| 1091500 | Cyberpunk 2077   |![cyberpunk](https://github.com/user-attachments/assets/ebd923fa-6d21-40e4-a746-a25b12cfb994)|
+| 1145360 | Hades            |<img width="400" height="225" alt="hades" src="https://github.com/user-attachments/assets/17f63705-6f42-4817-ba1f-00ef9595fe13" />|
+| 1245620 | ELDEN RING       |![elden ring](https://github.com/user-attachments/assets/4225c7c3-a316-467a-9184-985c925708c3)|
+| 1623730 | Palworld         |![palworld](https://github.com/user-attachments/assets/34ff9239-bbd4-4a69-b29d-1d05aafcaee4)|
+| 1627720 | Lies of P        |![Lies of P](https://github.com/user-attachments/assets/8341b5ca-8d94-4c64-a31f-225626b5c642)|
 
 > 게임 커버 이미지는 Steam 스토어 페이지에서 가져온 것으로,  
 > 교육용 학습 프로젝트 README에서만 사용한다.
