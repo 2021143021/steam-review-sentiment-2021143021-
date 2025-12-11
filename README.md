@@ -111,6 +111,7 @@ data/raw/steam_reviews_raw.csv
 
 id, app_id, recommend, review, timestamp_created, label
 ...
+```
 
 ## 3. 데이터 전처리 및 라벨링
 
