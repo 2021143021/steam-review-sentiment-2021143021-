@@ -79,8 +79,7 @@ EDA와 후속 분석을 통해 리뷰 패턴을 정량적으로 탐색한다.
 | 1145360 | Hades            | <img src="images/hades.jpg" width="140">         |
 | 1245620 | ELDEN RING       | <img src="images/elden_ring.jpg" width="140">   |
 | 1623730 | Palworld         | <img src="images/palworld.jpg" width="140">     |
-| 1627720 | Lies of P        | <img src="![Lies of P](https://github.com/user-attachments/assets/c7a2a971-7934-4f8e-9809-7b272c6f4906)
-"140">    |
+| 1627720 | Lies of P        | <img src= ![Lies of P](https://github.com/user-attachments/assets/8341b5ca-8d94-4c64-a31f-225626b5c642)|
 
 > 게임 커버 이미지는 Steam 스토어 페이지에서 가져온 것으로,  
 > 교육용 학습 프로젝트 README에서만 사용한다.
