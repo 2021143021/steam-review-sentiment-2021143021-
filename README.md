@@ -190,7 +190,8 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 
 `images/label_distribution.png` 그래프를 통해 라벨의 분포를 확인한다.
 
-![라벨 분포](images/label_distribution.png)
+<img width="960" height="720" alt="label_distribution" src="https://github.com/user-attachments/assets/115a2a7a-467d-4f56-906d-ab97f16d2daf" />
+
 
 - 대부분의 리뷰가 **추천(긍정, 1)**에 해당한다.
 - 대략 **3:1** 정도의 비율로 긍정 리뷰가 더 많다.
@@ -201,7 +202,8 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 
 `images/review_length_hist.png` 그래프를 통해 리뷰 텍스트의 길이 분포를 확인한다.
 
-![리뷰 길이 분포](images/review_length_hist.png)
+<img width="960" height="720" alt="review_length_hist" src="https://github.com/user-attachments/assets/e7c98e97-86e1-45b3-ae9b-1a69fd4bdfe6" />
+
 
 - 리뷰 길이는 대체로 **100자 이내**의 짧은 리뷰가 많다.
 - 0~400자 구간을 중심으로 히스토그램을 그리면, 짧은 리뷰가 급격히 많이 나타난다.
@@ -214,7 +216,8 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 
 `images/reviews_per_game.png` 그래프를 통해 게임별 데이터 분포를 확인한다.
 
-![게임별 리뷰 개수](images/reviews_per_game.png)
+<img width="960" height="720" alt="reviews_per_game" src="https://github.com/user-attachments/assets/7c249a5a-b4bc-4a45-98b3-2b2313a37a9e" />
+
 
 - 일부 게임(`app_id`)에 리뷰가 집중되는 편이다.
 - 예를 들어 매우 인기 있는 작품은 수천 개 이상의 리뷰를 가지고, 다른 게임들은 상대적으로 적은 리뷰를 가진다.
