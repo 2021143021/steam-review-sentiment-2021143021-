@@ -286,7 +286,8 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 
 `images/train_loss.png` 그래프를 통해 학습 손실 변화를 확인한다.
 
-![Train Loss](images/train_loss.png)
+<img width="960" height="720" alt="train_loss" src="https://github.com/user-attachments/assets/56b76c14-88fe-4575-b573-3cc4338748eb" />
+
 
 - Epoch가 증가할수록 Train Loss가 꾸준히 감소한다.
 - 이는 모델이 학습 데이터를 점점 더 잘 설명하고 있음을 의미한다.
@@ -295,7 +296,8 @@ EDA는 `src/eda/plot_figures.py`에서 수행하며, 그 결과를 PNG 이미지
 
 `images/train_val_accuracy.png` 그래프를 통해 정확도 추이를 비교한다.
 
-![Accuracy](images/train_val_accuracy.png)
+<img width="960" height="720" alt="train_val_accuracy" src="https://github.com/user-attachments/assets/ac72f9ed-b9cb-4cee-9e25-4a06585cc66c" />
+
 
 - **Train Accuracy**는 Epoch마다 상승하여 **0.94** 이상까지 올라간다.
 - **Validation Accuracy**는 약 **0.83** 내외에서 수렴한다.
